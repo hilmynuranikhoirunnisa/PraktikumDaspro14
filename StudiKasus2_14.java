@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class StudiKasus2_14 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -36,6 +37,25 @@ public class StudiKasus2_14 {
             } else {
                 System.out.println("Status : Tidak Memperoleh Dana Penghargaan (hanya untuk Juara 1/2/3). ");
             }
-        }  
+
+        } else if (jenisKegiatan.equalsIgnoreCase("PKM")) {
+
+            System.out.print("Status Pendanaan PKM (1 = lolos, 0 = tidak): ");
+            statusPKM = sc.nextInt();
+
+            if (statusPKM == 1) {
+                if (jumlahDokumen ==4) {
+                    System.out.println("Status: Berhak MemperolehDana Penghargaan (PKM lolos pendanaan).");
+                } else {
+                    int kurang = 4 - jumlahDokumen;
+                    System.out.println("Status: Dokumen Tidak Lengkap (kurang " + kurang + " dokumen). Dana Penghargaan Tidak Diberikan.");
+                }
+            } else {
+                System.out.println("Status: Tidak Memperoleh Dana Penghargaan (PKM tidak lolos pendanaan).");
+            }
+        } else {
+            System.out.println("Status: TidakMemperoleh Dana Penghargaan (jenis kegiatan tidak termasuk ketentuan).");
+        }
+        sc.close();
     }
 }
